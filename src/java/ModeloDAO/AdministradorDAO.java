@@ -189,7 +189,7 @@ public class AdministradorDAO extends ConexionBd implements Crud{
         ArrayList<AdministradorVO> listaAdmin = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "select * from administrador where estado='activo'";
+            sql = "select admin.id_Administrador,admin.Nombre, admin.apellido,admin.Telefono,admin.Direccion,admin.Correo, usu.Usuario, admin.estado from administrador as admin INNER JOIN usuarios as usu on admin.id_Usuario = usu.id_Usuario WHERE admin.estado = 'activo'";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {

@@ -11,17 +11,18 @@ package ModeloVO;
  */
 public class ServiciosVO {
     
-    private String id_Servicio, Nombre, Precio,Estado, id_Peluquero;
+    private String id_Servicio, Nombre, Precio,img,Estado;
 
     public ServiciosVO() {
     }
 
-    public ServiciosVO(String id_Servicio, String Nombre, String Precio,String Estado, String id_Peluquero) {
+    public ServiciosVO(String id_Servicio, String Nombre, String Precio,String img,String Estado) {
         this.id_Servicio = id_Servicio;
         this.Nombre = Nombre;
         this.Precio = Precio;
+        this.img = img;
         this.Estado = Estado;
-        this.id_Peluquero = id_Peluquero;
+    
     }
 
     public String getId_Servicio() {
@@ -56,13 +57,15 @@ public class ServiciosVO {
         this.Estado = Estado;
     }
 
-    public String getId_Peluquero() {
-        return id_Peluquero;
+    public String getImg() {
+        return img;
     }
 
-    public void setId_Peluquero(String id_Peluquero) {
-        this.id_Peluquero = id_Peluquero;
+    public void setImg(String img) {
+        this.img = img;
     }
+
+
     
     
 }

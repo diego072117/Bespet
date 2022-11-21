@@ -6,7 +6,9 @@
 package Controlador;
 
 import ModeloDAO.ClienteDAO;
+import ModeloDAO.MascotaDAO;
 import ModeloVO.ClienteVO;
+import ModeloVO.MascotaVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -38,12 +40,15 @@ public class ClienteControlador extends HttpServlet {
         String id_cliente = request.getParameter("id_cliente");
         String Nombres = request.getParameter("Nombres");
         String apellidos = request.getParameter("apellidos");
+        String telefono = request.getParameter("telefono");
         String Correo = request.getParameter("correo");
+        String avatar = request.getParameter("avatar");
         String Estado = request.getParameter("estado");
+        String id_Usuario = request.getParameter("id_Usuario");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         
           //2. ¿Quién tiene los datos de forma segura? VO
-        ClienteVO clieVO = new ClienteVO(id_cliente, Nombres, apellidos, Correo, Estado);
+        ClienteVO clieVO = new ClienteVO(id_cliente, Nombres, apellidos,telefono ,Correo, avatar,Estado,id_Usuario);
 
         //3. ¿Quién hace las operaciones? DAO
         ClienteDAO clieDAO = new ClienteDAO(clieVO);
@@ -57,7 +62,7 @@ public class ClienteControlador extends HttpServlet {
                 }else{
                     request.setAttribute("mensajeError", "El cliente no se registro correctamente");
                 }
-                request.getRequestDispatcher("RegistrarCliente.jsp").forward(request, response);
+                request.getRequestDispatcher("Cliente.jsp").forward(request, response);
                 break;
                 
             case 2: //Actualizar registro
@@ -67,6 +72,7 @@ public class ClienteControlador extends HttpServlet {
                     request.setAttribute("mensajeExito", "El cliente se actualizo correctamente");
                 }else{
                     request.setAttribute("mensajeError", "El cliente no se actualizo correctamente");
+                    
                 }
                 request.getRequestDispatcher("Cliente.jsp").forward(request, response);
                 break;
@@ -80,6 +86,7 @@ public class ClienteControlador extends HttpServlet {
                 }else{
                      request.setAttribute("mensajeError", "¡El cliente no existe!");
                        request.getRequestDispatcher("Cliente.jsp").forward(request, response);
+                       
                 }
                 break;     
             
@@ -94,6 +101,17 @@ public class ClienteControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("Cliente.jsp").forward(request, response);
                 break;
+                
+            /*  case 5: //cliente se registra
+                if (clieDAO.agregarRegistro()) {
+                    request.setAttribute("mensajeExito", "El cliente se registro correctamente");
+                }else{
+                    request.setAttribute("mensajeError", "El cliente no se registro correctamente");
+                }
+                request.getRequestDispatcher("RegistrarCliente.jsp").forward(request, response);
+                break;*/
+                
+            
            
          }
 

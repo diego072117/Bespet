@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/10/2022, 08:07:01 PM
+    Author     : DIEGO
+*/
+
+:root {
+  --primary-color: #6d56c1;
+  --primary-color-alt: #7b67c7;
+  --linear-gradient: linear-gradient(
+    54deg,
+    rgba(74, 76, 179, 0.95) 34%,
+    hsla(0, 34%, 71%, 0.95)
+  );
+}
+

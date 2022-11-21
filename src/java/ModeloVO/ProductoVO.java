@@ -11,14 +11,14 @@ package ModeloVO;
  */
 public class ProductoVO {
     
-    private String id_Producto, Nombre, Stock, Precio , Estado;
+    private String id_Producto, Nombre, Precio , Estado, img;
 
-    public ProductoVO(String id_Producto, String Nombre, String Stock, String Precio, String Estado) {
+    public ProductoVO(String id_Producto, String Nombre, String Precio, String Estado, String img) {
         this.id_Producto = id_Producto;
         this.Nombre = Nombre;
-        this.Stock = Stock;
         this.Precio = Precio;
         this.Estado = Estado;
+        this.img = img;
     }
 
     public ProductoVO() {
@@ -40,13 +40,6 @@ public class ProductoVO {
         this.Nombre = Nombre;
     }
 
-    public String getStock() {
-        return Stock;
-    }
-
-    public void setStock(String Stock) {
-        this.Stock = Stock;
-    }
 
     public String getPrecio() {
         return Precio;
@@ -62,6 +55,14 @@ public class ProductoVO {
 
     public void setEstado(String Estado) {
         this.Estado = Estado;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
       
       

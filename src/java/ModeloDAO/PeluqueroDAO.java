@@ -68,16 +68,15 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
         @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into peluquero values (?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO peluquero (Nombre,apellido,Telefono,Direccion,Correo,id_Usuario) VALUES (?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, id_Peluquero);
-            puente.setString(2, Nombre);
-            puente.setString(3, apellido);
-            puente.setString(4, Telefono);
-            puente.setString(5, Direccion);
-            puente.setString(6, Correo);
-            puente.setString(7, Estado);
-            puente.setString(8, id_Usuario);
+            
+            puente.setString(1, Nombre);
+            puente.setString(2, apellido);
+            puente.setString(3, Telefono);
+            puente.setString(4, Direccion);
+            puente.setString(5, Correo);
+            puente.setString(6, id_Usuario);
             puente.executeUpdate();
             operacion = true;
 
@@ -98,7 +97,7 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update peluquero set Nombre=?, apellido=?, Telefono=?, Direccion=?, Correo=?, Estado=?, id_Usuario=? where id_Peluquero=?";
+            sql = "update peluquero set Nombre=?, apellido=?, Telefono=?, Direccion=?, Correo=?, estado='activo' ,id_Usuario=?  where id_Peluquero=?";
             puente = conexion.prepareStatement(sql);
             
             puente.setString(1, Nombre);
@@ -106,9 +105,8 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
             puente.setString(3, Telefono);
             puente.setString(4, Direccion);
             puente.setString(5, Correo);
-            puente.setString(6, Estado);
-            puente.setString(7, id_Usuario);
-            puente.setString(8, id_Peluquero);
+            puente.setString(6, id_Usuario);
+            puente.setString(7, id_Peluquero);
             
             puente.executeUpdate();
             operacion = true;
@@ -174,14 +172,7 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
 
         } catch (SQLException e) {
             Logger.getLogger(PeluqueroVO.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            try {
-                this.cerrarConexion();
-            } catch (SQLException e) {
-                Logger.getLogger(PeluqueroDAO.class.getName()).log(Level.SEVERE, null, e);
-
-            }
-        }
+        } 
         return peluVO;
 
     }
@@ -191,7 +182,7 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
         ArrayList<PeluqueroVO> listaPelu = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "select * from peluquero where estado='activo'";
+            sql = "SELECT pelu.id_Peluquero,pelu.Nombre,pelu.apellido,pelu.Telefono,pelu.Direccion,pelu.Correo,pelu.Estado, usu.Usuario FROM `peluquero` as pelu INNER JOIN usuarios as usu on pelu.id_Usuario=usu.id_Usuario WHERE pelu.Estado='activo'";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
@@ -213,5 +204,34 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
         }
         return listaPelu;
     }
+    
+     public PeluqueroVO consultarUsuPelu(String id_Usuario) {
+        PeluqueroVO peluVO = null;
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from peluquero where id_Usuario=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, id_Usuario);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                peluVO = new PeluqueroVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
+                        mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8) );
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(PeluqueroVO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(PeluqueroDAO.class.getName()).log(Level.SEVERE, null, e);
+
+            }
+        }
+        return peluVO;
+
+    }
+     
+      
     
 }

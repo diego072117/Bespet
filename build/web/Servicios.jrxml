@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a23cb8bd-caa6-403d-8fa6-14856f1b1385">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     servicios.`id_Servicios` AS servicios_id_Servicios,
+     servicios.`Nombre` AS servicios_Nombre,
+     servicios.`Precio` AS servicios_Precio,
+     servicios.`Estado` AS servicios_Estado
+FROM
+     `servicios` servicios]]>
+	</queryString>
+	<field name="servicios_id_Servicios" class="java.lang.Integer"/>
+	<field name="servicios_Nombre" class="java.lang.String"/>
+	<field name="servicios_Precio" class="java.math.BigDecimal"/>
+	<field name="servicios_Estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="1" y="0" width="263" height="62" uuid="994d1589-375b-42e1-b9f0-90ad8def4eca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gadugi" size="45" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Servicios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="1" y="70" width="330" height="22" uuid="0ef12f75-d2f0-45e4-be5c-c9b413e27f03"/>
+				<textElement>
+					<font fontName="Gadugi" size="16" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[En este espacio podras visualizar los reportes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="100" width="236" height="27" uuid="7863ba42-400a-4674-bcd2-05cbb33471bf"/>
+				<textElement>
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<text><![CDATA[aqui podras ver todos los servicios que se le pueden prestar a tu mascota]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="605" y="0" width="197" height="20" forecolor="#736343" uuid="51b99396-8d9b-4d38-b9d0-e0fe7da3d264"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="671" y="51" width="107" height="43" uuid="cda20b70-9fa8-47f7-8acf-b4c2545396a3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gadugi" size="30" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Bespet]]></text>
+			</staticText>
+			<image>
+				<reportElement x="614" y="38" width="57" height="56" uuid="d57ea35e-a734-4cca-ac5a-d6eafccc8704"/>
+				<imageExpression><![CDATA["C:\\Users\\luisi\\Documents\\NetBeansProjects\\TitanesPeludos\\web\\image\\P.perro.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="0396b735-b47d-4318-afb7-06cc879f5f85"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="200" height="15" forecolor="#736343" uuid="1f4bc993-e0ab-4ca4-ba71-6495946cb237"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="200" height="15" forecolor="#736343" uuid="c392907b-ff28-412e-885c-44ae346f9614"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="200" height="15" forecolor="#736343" uuid="25b7d7f5-97a1-4d35-8e36-37bf2d9c11cc"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="200" height="15" forecolor="#736343" uuid="2a96a046-c10f-4846-9446-e17867cbd216"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="e87250c4-c3fe-45d5-b1c5-28e02ec159ab"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="200" height="15" uuid="c714b653-f6c0-47f1-836b-cccb1a5a8624"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{servicios_id_Servicios}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="200" y="0" width="200" height="15" uuid="c8672abd-ebcd-49f9-984a-8df7016bc2b2"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{servicios_Nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="200" height="15" uuid="fefe44c7-36cf-4c8e-be64-46f1d6b8d984"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{servicios_Precio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="200" height="15" uuid="e647b56f-2ac0-4886-9d7c-0af5e4a087ef"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{servicios_Estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="d7529d34-7f3a-4100-9e2e-48b2bc3883c7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="b9371746-0cab-4a55-9787-717d375c714e"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="2299e9ba-8e89-48dd-98a2-0dd8df063eea"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Gadugi" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="3a60945f-8911-4b9b-942c-04bb9396c698"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="4" width="197" height="20" forecolor="#736343" uuid="9829c209-8cc7-40f4-a0ea-cc0fde047081"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Gadugi" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

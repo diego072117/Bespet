@@ -272,18 +272,19 @@ section {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background: url(../image/home_bg_img.jpg) no-repeat;
+  background: url(../image/a.jpg) no-repeat;
   background-position: center;
   background-size: cover;
   position: relative;
 }
 
 .home .content {
-  width: 50rem;
+   
+  width: 72rem;
 }
 
 .home .content h3 {
-  font-size: 6rem;
+  font-size: 4rem;
   color: #fff;
   padding-bottom: 1rem;
 }
@@ -333,6 +334,7 @@ section {
 
 .about .image img {
   width: 100%;
+  border-radius: 50%;
 }
 
 .about .content {
@@ -351,7 +353,8 @@ section {
 }
 
 .about .content p {
-  font-size: 1.6rem;
+    width: 90%;
+  font-size: 2.5rem;
   color: #666;
   padding: 1rem 0;
   line-height: 2;

@@ -34,7 +34,7 @@ public class ProductoDAO extends ConexionBd implements Crud {
     private String sql;
 
     //declarar las variables 
-    private String id_Producto = "", Nombre = "", Stock = "", Precio = "", Estado = "";
+    private String id_Producto = "", Nombre = "", Precio = "", Estado = "", img="";
 
     public ProductoDAO() {
     }
@@ -49,9 +49,9 @@ public class ProductoDAO extends ConexionBd implements Crud {
             //traer los datos del VO
             id_Producto = prodVO.getId_Producto();
             Nombre = prodVO.getNombre();
-            Stock = prodVO.getStock();
             Precio = prodVO.getPrecio();
             Estado = prodVO.getEstado();
+            img = prodVO.getImg();
 
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -63,12 +63,12 @@ public class ProductoDAO extends ConexionBd implements Crud {
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "INSERT INTO productos (Nombre,Stock,Precio) VALUES (?,?,?)";
+            sql = "INSERT INTO productos (Nombre,Precio,img) VALUES (?,?,?)";
             puente = conexion.prepareStatement(sql);
      
             puente.setString(1, Nombre);
-            puente.setString(2, Stock);
-            puente.setString(3, Precio);
+            puente.setString(2, Precio);
+            puente.setString(3, img);
 
             puente.executeUpdate();
             operacion = true;
@@ -90,12 +90,12 @@ public class ProductoDAO extends ConexionBd implements Crud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update productos set Nombre=?, Stock=?, Precio=?, Estado='activo' where id_Productos=?";
+            sql = "update productos set Nombre=?, Precio=?, Estado='activo', img=? where id_Productos=?";
             puente = conexion.prepareStatement(sql);
 
             puente.setString(1, Nombre);
-            puente.setString(2, Stock);
-            puente.setString(3, Precio);
+            puente.setString(2, Precio);
+            puente.setString(3, img);
             puente.setString(4, id_Producto);
 
             puente.executeUpdate();

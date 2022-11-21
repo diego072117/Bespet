@@ -37,7 +37,7 @@ public class PeluqueroControlador extends HttpServlet {
 
         String id_Peluquero = request.getParameter("id_Peluquero");
         String Nombre = request.getParameter("Nombre");
-        String apellido = request.getParameter("apellido");
+        String apellido = request.getParameter("Apellido");
         String Telefono = request.getParameter("Telefono");
         String Direccion = request.getParameter("Direccion");
         String Correo = request.getParameter("Correo");
@@ -59,7 +59,7 @@ public class PeluqueroControlador extends HttpServlet {
                 }else{
                     request.setAttribute("mensajeError", "El Peluquero no se registro correctamente");
                 }
-                request.getRequestDispatcher("RegistrarPeluquero.jsp").forward(request, response);
+                request.getRequestDispatcher("Peluquero.jsp").forward(request, response);
                 break;
                 
             case 2: //Actualizar registro

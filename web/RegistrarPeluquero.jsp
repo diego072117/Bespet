@@ -11,55 +11,105 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="css/estilos_form.css" rel="stylesheet" type="text/css"/>
+        <link href="css/validaciones.css" rel="stylesheet" type="text/css"/>
+        <title>Registro Peluquero</title>
     </head>
     <body>
-         <center>
-        <h1>Registrar Peluquero</h1>
-        <form method="post" action="Peluquero">
-            <table>
-                <tr>
-                Nombre:<br>
-                <input type="text" name="Nombre" required><br>
-                Apellido:<br>
-                <input type="text" name="apellido" required><br>
-                Telefono:<br>
-                <input type="text" name="Telefono" required><br>
-                Direccion:<br>
-                <input type="text" name="Direccion" required><br>
-                Correo:<br>
-                <input type="text" name="Correo" required><br>
-                Estado:<br>
-                <input type="text" name="Estado" required><br>
-                <select class="aa" name="Usuario" required>
-                    <option>Seleccion</option>
-                    <%                        UsuarioDAO usuDAO = new UsuarioDAO();
-                        for (UsuarioVO usuVO : usuDAO.listar()) {
+        <%@include file="navadmin.jsp"%>
+        <div class="home-section">
+            
+            <h1>Registro Peluquero</h1>
+            <div class="form-data2">
+                <div>
+                        <a class="atras" href="Peluquero.jsp"><i class="fa-solid fa-angle-left"></i></a>
+                    </div>
+                <img src="image/admin.svg" class="gatuno3"/>
 
-                    %>
-                    <option value="<%=usuVO.getId_Usuario()%>"><%=usuVO.getUsuario()%></option>
+                <center>
+                    <div class="form" id="form">
+                        <form method="post" action="Peluquero">
+                            <table>
+                                <tr>
+                                <div class="formulario__grupo" id="grupo__Nombre">
+                                    <label class="peluq" for="Nombre">Nombre</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="Nombre" id="Nombre" placeholder="Nombre">
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Error</p>
+                                </div>
+                                <br>
+                                <div class="formulario__grupo" id="grupo__Apellido">
+                                    <label class="peluq" for="Apellido">Apellido</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="Apellido" id="Apellido" placeholder="Apellido">
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Error</p>
+                                </div>
+                                <br>
+                                <div class="formulario__grupo" id="grupo__Telefono">
+                                    <label class="peluq" for="Telefono">Telefono</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="Telefono" id="Telefono" placeholder="Telefono">
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Error</p>
+                                </div>
+                                <br>
+                                <div class="formulario__grupo" id="grupo__Direccion">
+                                    <label class="peluq" for="Direccion">Dirección</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="Direccion" id="Direccion" placeholder="Dirección">
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Error</p>
+                                </div>
+                                <br>
+                                <div class="formulario__grupo" id="grupo__Correo">
+                                    <label class="peluq" for="Correo">Correo</label>
+                                    <div class="formulario__grupo-input">
+                                        <input type="text" class="formulario__input" name="Correo" id="Correo" placeholder="Correo">
+                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Error</p>
+                                </div>
+                                <label class="peluq">Usuario:</label>  
+                                <select class="aa" name="Usuario" required>
+                                    <option>Seleccion</option>
+                                    <%                        UsuarioDAO usuDAO = new UsuarioDAO();
+                                        for (UsuarioVO usuVO : usuDAO.listar()) {
 
-                    <%}%>
+                                    %>
+                                    <option value="<%=usuVO.getId_Usuario()%>"><%=usuVO.getUsuario()%></option>
 
-                </select><br
-                </tr>
-            </table><br>
-            <button class="btn btn-secondary btn-sm">Registrar</button> 
-            <input type="hidden" value="1" name="opcion">
-        </form><br>
-        
-        <a href="Peluquero.jsp">
-            Regresar
-        </a>
+                                    <%}%>
 
-        <%
-            if (request.getAttribute("mensajeError") != null) { %>
-        ${mensajeError}
+                                </select>
+                                </tr>
+                            </table><br>
+                            <button class="btn2" type="submit">Registrar</button> 
+                            <input type="hidden" value="1" name="opcion">
+                        </form><br>
+                    </div>
+                    <div class="mensaje">
+                        <%
+                            if (request.getAttribute("mensajeError") != null) { %>
+                        ${mensajeError}
 
-        <%} else {%>
-        ${mensajeExito}
-        <%}%>
-
-    </center>
+                        <%} else {%>
+                        ${mensajeExito}
+                        <%}%>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+        <script src="js/validaciones.js" type="text/javascript"></script>
     </body>
 </html>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bd2880d-283d-4fca-a6af-33212631400c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     usuarios.`id_Usuario` AS usuarios_id_Usuario,
+     usuarios.`Usuario` AS usuarios_Usuario,
+     usuarios.`Estado` AS usuarios_Estado
+FROM
+     `usuarios` usuarios]]>
+	</queryString>
+	<field name="usuarios_id_Usuario" class="java.lang.Integer"/>
+	<field name="usuarios_Usuario" class="java.lang.String"/>
+	<field name="usuarios_Estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="263" height="62" uuid="9421204d-ea55-44a3-a39d-3b75624c4621"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gadugi" size="45" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Usuarios]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="605" y="0" width="197" height="20" forecolor="#736343" uuid="c1c06f1c-4dd1-45a6-b680-6a0f02acc34a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="71" width="330" height="22" uuid="234a05ad-1c2d-4fc2-84a7-ea66db41aa64"/>
+				<textElement>
+					<font fontName="Gadugi" size="16" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[En este espacio podras visualizar los reportes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="101" width="198" height="27" uuid="3262994e-3d28-43b5-9fd8-b9e29a32cd67"/>
+				<textElement>
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<text><![CDATA[aqui podras ver todos los usuarios registrados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="679" y="54" width="107" height="43" uuid="11104c1b-18c3-49ac-ad82-422fbb72941d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Gadugi" size="30" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Bespet]]></text>
+			</staticText>
+			<image>
+				<reportElement x="288" y="101" width="331" height="0" uuid="6abb706c-33fc-4983-9222-245dd28aa6ff"/>
+				<imageExpression><![CDATA["C:\\Users\\luisi\\Documents\\NetBeansProjects\\TitanesPeludos\\web\\image\\P.perro.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="625" y="45" width="57" height="56" uuid="4f8978f2-627e-4008-9807-763a2f7ee519"/>
+				<imageExpression><![CDATA["C:\\Users\\luisi\\Documents\\NetBeansProjects\\TitanesPeludos\\web\\image\\P.perro.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="21a1fcc9-e9ba-410e-a7a7-7e1911938187"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="267" height="15" forecolor="#736343" uuid="cc2128dd-a655-49c0-bd75-161d229e72d1"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="267" y="0" width="267" height="15" forecolor="#736343" uuid="4748c4de-91f5-4916-982c-3b67634521fa"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[Usuarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="534" y="0" width="267" height="15" forecolor="#736343" uuid="19c8cfaa-936a-4572-b262-4526383cd253"/>
+				<textElement>
+					<font fontName="Gadugi" size="11"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="15ae84a7-183d-466e-9d11-4a1c84aee359"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="267" height="15" uuid="fd4fd971-11e2-41f6-b5f4-b93b2ffa02cc"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{usuarios_id_Usuario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="267" y="0" width="267" height="15" uuid="f2f6d8b7-dde1-404d-a845-c4cb194461c0"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{usuarios_Usuario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="534" y="0" width="267" height="15" uuid="7841680f-e655-4ead-b2aa-2677191da6bf"/>
+					<textElement>
+						<font fontName="Gadugi" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{usuarios_Estado}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="63455732-1956-402a-ab93-f6abb02a9988"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="6c75a78d-d045-4ad0-a17d-971f495c7441"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="0ae62f3a-d034-4fbe-b7d7-42f8b938f9c3"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Gadugi" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="a44c43c5-1d2f-46df-aaca-b94888d5f48f"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="890377b5-83fb-42b1-b1e9-0a23d82582da"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Gadugi" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

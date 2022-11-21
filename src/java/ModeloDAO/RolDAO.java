@@ -45,34 +45,37 @@ public class RolDAO extends ConexionBd implements Crud {
             id_Rol = rolVO.getId_Rol();
             rolTipo = rolVO.getRolTiPo();
             
+            
         } catch (Exception e) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
-
-    @Override
-    public boolean agregarRegistro() {
-        try {
-            sql = "insert into rol(rolId,rolTipo) values (?,?)";
+    
+    public boolean agregarRegistro(String id_Rol, String id_Usuario ) {
+           try {
+            sql = "INSERT INTO usuario_rol (id_Rol,id_Usuario) VALUES (?,?)";
             puente = conexion.prepareStatement(sql);
+
             puente.setString(1, id_Rol);
-            puente.setString(2, rolTipo);
+            puente.setString(2, id_Usuario);
             puente.executeUpdate();
             operacion = true;
 
         } catch (SQLException e) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(asignarRolDAO.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
                 this.cerrarConexion();
-            } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception e) {
+                Logger.getLogger(asignarRolDAO.class.getName()).log(Level.SEVERE, null, e);
+
             }
         }
 
         return operacion;
     }
+
 
     @Override
     public boolean actualizarRegistro() {
@@ -119,6 +122,47 @@ public class RolDAO extends ConexionBd implements Crud {
             }
         }
         return listaRol;
+    }
+    
+    
+    
+     public ArrayList<RolVO> listarRoles() 
+    {
+        ArrayList<RolVO> listaRol = new ArrayList<>();
+        try 
+        {
+            conexion = this.obtenerConexion();
+            sql = "select * from rol";  
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) 
+            {
+                RolVO rolVO = new RolVO(mensajero.getString(1), mensajero.getString(2));
+                listaRol.add(rolVO);
+            }
+
+        } 
+        catch (SQLException e) 
+        {
+            Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
+        } 
+        finally 
+        {
+            try 
+            {
+                this.cerrarConexion();
+            } 
+            catch (SQLException e) 
+            {
+                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return listaRol;
+    }
+
+    @Override
+    public boolean agregarRegistro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

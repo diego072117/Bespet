@@ -37,11 +37,12 @@ public class ServiciosControlador extends HttpServlet {
         String id_Servicio = request.getParameter("id_Servicio");
         String Nombre = request.getParameter("Nombre");
         String Precio = request.getParameter("Precio");
+        String img = request.getParameter("img");
         String Estado = request.getParameter("estado");
-        String id_Peluquero = request.getParameter("id_Peluquero");
+        
         int opcion = Integer.parseInt(request.getParameter("opcion"));
            //2. ¿Quién tiene los datos de forma segura? VO
-        ServiciosVO serviciosVO = new ServiciosVO(id_Servicio, Nombre, Precio, Estado, id_Peluquero);
+        ServiciosVO serviciosVO = new ServiciosVO(id_Servicio, Nombre, Precio,img ,Estado);
 
         //3. ¿Quién hace las operaciones? DAO
         ServiciosDAO serviciosDAO = new ServiciosDAO(serviciosVO);
@@ -88,7 +89,7 @@ public class ServiciosControlador extends HttpServlet {
                     request.setAttribute("mensajeExito", "Servicio eliminado");
                     
                 }else{
-                    request.setAttribute("mensajeError", "El Servicio no se pudo eliminar");
+                    request.setAttribute("mensajeError", "");
                 }
                 request.getRequestDispatcher("servicios.jsp").forward(request, response);
                 break;     

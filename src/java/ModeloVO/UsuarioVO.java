@@ -11,12 +11,13 @@ package ModeloVO;
  */
 public class UsuarioVO {
     //declarar objetos
-    private String id_Usuario , Usuario, Password;
+    private String id_Usuario , Usuario, Password, Estado;
 
-    public UsuarioVO(String id_Usuario, String Usuario, String Password) {
+    public UsuarioVO(String id_Usuario, String Usuario, String Password, String Estado) {
         this.id_Usuario = id_Usuario;
         this.Usuario = Usuario;
         this.Password = Password;
+        this.Estado = Estado;
     
     }
     //constructor
@@ -54,6 +55,15 @@ public class UsuarioVO {
         this.Password = Password;
     }
 
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+    
     
    
 }

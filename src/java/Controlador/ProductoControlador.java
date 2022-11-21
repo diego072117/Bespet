@@ -36,12 +36,12 @@ public class ProductoControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id_Producto = request.getParameter("id_Producto");
         String Nombre = request.getParameter("NombreProducto");
-        String Stock = request.getParameter("Stock");
         String Precio = request.getParameter("Precio");
         String Estado = request.getParameter("Estado");
+        String img = request.getParameter("img");
         int opcion = Integer.parseInt(request.getParameter("opcion"));
            //2. ¿Quién tiene los datos de forma segura? VO
-        ProductoVO prodVO = new ProductoVO(id_Producto, Nombre, Stock, Precio, Estado);
+        ProductoVO prodVO = new ProductoVO(id_Producto, Nombre,Precio, Estado, img);
 
         //3. ¿Quién hace las operaciones? DAO
         ProductoDAO prodDAO = new ProductoDAO(prodVO);

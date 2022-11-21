@@ -36,7 +36,7 @@ public class ServiciosDAO extends ConexionBd implements Crud{
     private String sql;
 
     //declarar las variables 
-    private String id_Servicio = "", Nombre = "", Precio = "",Estado="", id_Peluquero = "";
+    private String id_Servicio = "", Nombre = "", Precio = "", img="",Estado="";
     
          //2. Método principal para recibir datos del VO
     public ServiciosDAO(ServiciosVO serviciosVO) {
@@ -49,8 +49,9 @@ public class ServiciosDAO extends ConexionBd implements Crud{
             id_Servicio = serviciosVO.getId_Servicio();
             Nombre = serviciosVO.getNombre();
             Precio = serviciosVO.getPrecio();
+            img = serviciosVO.getImg();
             Estado = serviciosVO.getEstado();
-            id_Peluquero = serviciosVO.getId_Peluquero();
+
 
 
         } catch (Exception e) {
@@ -63,13 +64,14 @@ public class ServiciosDAO extends ConexionBd implements Crud{
     @Override
     public boolean agregarRegistro() {
         try {
-            sql = "insert into servicios values (?,?,?,?,?)";
+            sql = "INSERT INTO servicios (Nombre,Precio,img) VALUES (?,?,?)";
+            
             puente = conexion.prepareStatement(sql);
-            puente.setString(1, id_Servicio);
-            puente.setString(2, Nombre);
-            puente.setString(3, Precio);
-            puente.setString(4, Estado);
-            puente.setString(5, id_Peluquero);
+        
+            puente.setString(1, Nombre);
+            puente.setString(2, Precio);
+            puente.setString(3, img);
+   
             puente.executeUpdate();
             operacion = true;
 
@@ -89,14 +91,13 @@ public class ServiciosDAO extends ConexionBd implements Crud{
         @Override
     public boolean actualizarRegistro() {
         try {
-            sql = "update servicios set Nombre=?, Precio=?, Estado=?, id_Peluquero=? where id_Servicios=?";
+            sql = "update servicios set Nombre=?, Precio=?,img=?,estado='activo' where id_Servicios=?";
             puente = conexion.prepareStatement(sql);
             
             puente.setString(1, Nombre);
             puente.setString(2, Precio);
-            puente.setString(3, Estado);
-            puente.setString(4, id_Peluquero); 
-            puente.setString(5, id_Servicio);
+            puente.setString(3, img);
+            puente.setString(4, id_Servicio);
             puente.executeUpdate();
             operacion = true;
 
@@ -130,17 +131,16 @@ public class ServiciosDAO extends ConexionBd implements Crud{
 
         } catch (SQLException e) {
             Logger.getLogger(ServiciosVO.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            try {
-                this.cerrarConexion();
-            } catch (SQLException e) {
-                Logger.getLogger(ServiciosDAO.class.getName()).log(Level.SEVERE, null, e);
-
-            }
-        }
+        } 
         return serviciosVO;
 
     }
+    
+    
+    
+    
+    
+    
         public ArrayList<ServiciosVO> listar() {
 
         ArrayList<ServiciosVO> listaServicio= new ArrayList<>();
