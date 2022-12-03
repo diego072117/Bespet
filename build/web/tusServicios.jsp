@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="ModeloDAO.ServiciosDAO"%>
 <%@page import="ModeloVO.ServiciosVO"%>
 <%@page import="ModeloDAO.asignarServicioDAO"%>
@@ -55,6 +56,12 @@
             String id_pelu = peluVO.getId_Peluquero();
 
             MascotaVO masVO = new MascotaVO();
+            
+            UsuarioVO usuaVO = new UsuarioVO();
+
+            UsuarioDAO usuaDAO = new UsuarioDAO(usuaVO);
+
+            usuaVO = usuaDAO.consultarUsuUsu(id_usua);
 
 
         %>
@@ -71,9 +78,10 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
+                  <%= usuaVO.getUsuario()%>
                 <!--user img-->
                 <div class="user">
-                    <img src="/img1.jpg" alt="">
+                    <img src="./image/admin.svg" alt="">
                 </div>
             </div>
 

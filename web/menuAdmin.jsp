@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="ModeloVO.AdministradorVO"%>
+<%@page import="ModeloDAO.AdministradorDAO"%>
 <%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="ModeloVO.UsuarioVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,7 +27,16 @@
         <div class="container">
             <%@include file="navadmin.jsp"%>
 
-            <%         String id_usua = rolVO.getId_Rol();
+            <%         
+                String id_usua = rolVO.getId_Rol();
+                
+                AdministradorVO adminVO = new AdministradorVO();
+                
+                AdministradorDAO adminDAO =new AdministradorDAO();
+                
+                adminVO = adminDAO.consultarUsuAdmin(id_usua);
+                
+              
 
                 UsuarioVO usuaVO = new UsuarioVO();
 
@@ -35,6 +46,8 @@
 
 
             %>
+            
+       
             <!-- main -->
             <div class="main">
                 <div class="topbar">
@@ -103,7 +116,7 @@
                             <div class="cont-w">
                                 <img src="./image/welcome.svg" class="img-menu">
                                 <div class="desc-w">
-                                    <h1 class="menu-title">¡Bienvenido!</h1>
+                                    <h1 class="menu-title">¡Bienvenido! <%= adminVO.getNombre() %> <%= adminVO.getApellido() %></h1>
                                     <p class="menu-p"> A nuestro sistema de gestion de servicios <b>Bespet</b>, deseamos que esta herramienta pueda facilitar tu trabajo y sus actividades correspondientes,
                                         podras realizar tareas desde registrar, actualizar, asignar hasta generar reportes de la informacion que requieras. <br> 
                                         <br><b>¡Recuerda!</b><br><br> Cualquier duda con respecto a al sistema no dudes en consultar nuestro manual de usuario   </p>
@@ -120,7 +133,7 @@
 
                     <div class="recentCustomers">
                         <div class="cardHeader-dash">
-                            <h2>Contactor</h2>
+                            <h2>Contacto</h2>
                         </div>
                         <div class="contact-img">
                             <img class="cm" src="./image/contacto.svg">  

@@ -136,7 +136,7 @@
 
                 <div class="recentCustomers">
                      <div class="cardHeader-dash">
-                            <h2>Contactor</h2>
+                            <h2>Contacto</h2>
                         </div>
                         <div class="contact-img">
                             <img class="cm" src="./image/contacto.svg">  

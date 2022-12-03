@@ -99,7 +99,7 @@
                                     <th>Peluquero</th>
                                     <th>Mascota</th>
                                     <th>Servicio</th>
-                                    <th>Id Cliente</th>
+                                    <th>Dueño</th>
                                     <th>Fecha Terminado</th>
                                     <th>Estado</th>
 

@@ -8,10 +8,10 @@ const inputs = document.querySelectorAll('#form input');
 
 const expresiones = {
     textUsuario: /^[a-zA-ZÀ-ÿ\s]{4,10}$/, // Letras y espacios, pueden llevar acentos.
-    Nombre: /^[a-zA-ZÀ-ÿ\s]{4,10}$/,
-    Apellido: /^[a-zA-ZÀ-ÿ\s]{4,10}$/,
-    Nombres: /^[a-zA-ZÀ-ÿ\s]{4,10}$/,
-    apellidos: /^[a-zA-ZÀ-ÿ\s]{4,10}$/,
+    Nombre: /^[a-zA-ZÀ-ÿ\s]{4,25}$/,
+    Apellido: /^[a-zA-ZÀ-ÿ\s]{4,25}$/,
+    Nombres: /^[a-zA-ZÀ-ÿ\s]{4,25}$/,
+    apellidos: /^[a-zA-ZÀ-ÿ\s]{4,25}$/,
     textClave: /^.{4,12}$/,
     textNombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
     textApellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
@@ -25,7 +25,7 @@ const expresiones = {
     Tipo: /^[a-zA-ZÀ-ÿ\s]{4,20}$/,
     Raza: /^[a-zA-ZÀ-ÿ\s]{4,20}$/,
     Precio: /^\d{3,10}$/,
-    NombreProducto: /^[a-zA-ZÀ-ÿ\s]{4,20}$/
+    NombreProducto: /^[a-zA-ZÀ-ÿ\s]{4,25}$/
 }
 const campos = {
     textUsuario: false,

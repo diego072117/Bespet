@@ -212,4 +212,31 @@ public class AdministradorDAO extends ConexionBd implements Crud{
         return listaAdmin;
     }
     
+    public AdministradorVO consultarUsuAdmin(String id_Usuario) {
+        AdministradorVO adminVO = null;
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from administrador where id_Usuario=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, id_Usuario);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                adminVO = new AdministradorVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
+                        mensajero.getString(4), mensajero.getString(5), mensajero.getString(6), mensajero.getString(7), mensajero.getString(8) );
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(AdministradorVO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(AdministradorDAO.class.getName()).log(Level.SEVERE, null, e);
+
+            }
+        }
+        return adminVO;
+
+    }
+    
 }
