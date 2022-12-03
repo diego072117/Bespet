@@ -7,6 +7,7 @@ package ModeloDAO;
 
 
 import ModeloVO.PeluqueroVO;
+import ModeloVO.UsuarioVO;
 import Util.ConexionBd;
 import Util.Crud;
 import java.sql.Connection;
@@ -229,6 +230,34 @@ public class PeluqueroDAO extends ConexionBd implements Crud{
             }
         }
         return peluVO;
+
+    }
+     
+     
+      public UsuarioVO consultarUsuUsu(String id_Usuario) {
+        UsuarioVO usuVO = null;
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select * from usuarios where id_Usuario=?";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, id_Usuario);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                usuVO = new UsuarioVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
+                        mensajero.getString(4));
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(UsuarioVO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+
+            }
+        }
+        return usuVO;
 
     }
      

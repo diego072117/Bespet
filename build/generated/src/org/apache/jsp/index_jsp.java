@@ -56,7 +56,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n");
       out.write("        <link rel=\"icon\" type=\"image/x-icon\" href=\"image/pata.png\">\n");
-      out.write("        <link rel=\"icon\" type=\"image/x-icon\" href=\"image/pata.png\">\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
       out.write("        <title>Bespet</title>\n");
       out.write("        <!-- font awesome cdn link  -->\n");
@@ -288,7 +287,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"credit\"> created by <span> mr. web designer </span> | all rights reserved! </div>\n");
       out.write("\n");
       out.write("        </section>\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

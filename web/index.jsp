@@ -14,7 +14,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="icon" type="image/x-icon" href="image/pata.png">
-        <link rel="icon" type="image/x-icon" href="image/pata.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bespet</title>
         <!-- font awesome cdn link  -->
@@ -236,7 +235,6 @@
             <div class="credit"> created by <span> mr. web designer </span> | all rights reserved! </div>
 
         </section>
-
 
 
 

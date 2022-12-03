@@ -1,0 +1,139 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1/12/2022, 06:59:00 PM
+    Author     : DIEGO UwU
+*/
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+.form{
+    /* background: #0075FF; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.form .img-usu{
+    width: 43%;
+}
+
+.form .img-usu2{
+    width: 39%;
+}
+
+.inp-img{
+    height: 45px;
+    width: 100%
+}
+
+.imageci{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.img-usu{
+    width: 70%;
+}
+
+.img-asi-ser{
+    width: 100%;
+}
+
+.slider-p{
+    margin-top: 7px;
+    color: #737373;
+}
+
+.slider-title{
+    font-size: 1.5em;
+}
+
+
+.columna{
+    /* background: #1ed12d; */
+    width: 47%;
+    margin: 0.5em;
+}
+
+.formulario__grupo{
+    /* background: #6d56c1; */
+    width: 100%;
+    padding: 1em;
+}
+
+.formulario__grupo label{
+    /* background: #6d56c1; */
+    font-size: 1.2em;
+    font-family: system-ui;
+}
+
+.formulario__grupo-input{
+    /* background: #F66060; */
+}
+
+.formulario__grupo-input input{
+    /* background: aqua; */
+    margin-top: 1em;
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: #a3c3ff;
+    background-color: #f2f7fe;
+    font-size: 0.9em;
+}
+
+.formulario__grupo-input select{
+    /* background: #6d56c1; */
+    margin-top: 1em;
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: #a3c3ff;
+    background-color: #f2f7fe;
+    font-size: 0.9em;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+}
+
+.formulario__grupo-input select option{
+    /* background: #6d56c1; */
+    font-size: 1.2em;
+    padding: 1em;
+    font-family: system-ui;
+ 
+}
+
+.btn2{
+    background: #5677fc;
+    width: 30%;
+    align-self: center;
+    height: 2.5em;
+    margin: 1.5em;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn2 i{
+    margin-left: 1em;
+}
+
+.btn2:hover {
+    background: #3b52d3;
+    transition: 0.6s;
+}
+

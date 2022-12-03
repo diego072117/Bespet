@@ -8,27 +8,9 @@ and open the template in the editor.
     Author     : DIEGO
 */
 
-.pdf-cont{
-        display: flex;
-    margin-bottom: 3em;
-    flex-direction: column-reverse;
-}
-.btn-pdf{
-    border: none;
-    padding: 0.5em;
-    width: 30%;
-    color: #ffff;
-    font-weight: 600;
-    background-color: #7cb1ff;
-    border-radius: 5px;
-    margin-top: 1em;
-}
 
-/*.pdf{
-    background: palevioletred
-}*/
 
-tr:hover {background-color: gray;}
+
 
 .btn-new{
     display: flex;
@@ -62,12 +44,43 @@ tr:hover {background-color: gray;}
     background: red; 
 }
 
-.btn{
+.btn-rol{
+    padding: 8px 12px;
+    background: #ffc78e;
+    border: none;
     border-radius: 5px;
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 13px;
-    color: #000;
-    background: red; 
 }
+
+
+.btn-pdf{
+    border: none;
+    background: none;
+    color: #fff;
+}
+
+.pdf{
+    border: none;
+    padding: 8px 46px;
+    background: #5aa4ff;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 9px;
+}
+
+.cont-head{
+    display: flex;
+    width: 38%;
+    justify-content: space-between;
+}
+
+.imageci{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.img-usu{
+    width: 70%;
+}
+
+

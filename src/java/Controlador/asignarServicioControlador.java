@@ -60,6 +60,7 @@ public class asignarServicioControlador extends HttpServlet {
     String peluquero;
     String mascota;
     String servicio;
+    String clie;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -148,6 +149,7 @@ public class asignarServicioControlador extends HttpServlet {
                 nombreMas = request.getParameter("nombreMascota");
                 servicio = request.getParameter("id_Servicio");
                 nombreSer = request.getParameter("nombreServicio");
+                clie = request.getParameter("idcliente");
 
                 asiVO = new asignarServicioVO();
                 /*asiVO.setId_Asignar(id);*/
@@ -159,6 +161,7 @@ public class asignarServicioControlador extends HttpServlet {
                 asiVO.setNombreMascota(nombreMas);
                 asiVO.setId_Servicio(servicio);
                 asiVO.setNombreServicio(nombreSer);
+                asiVO.setIdCliente(clie);
                 lista.add(asiVO);
 
                 request.setAttribute("lista", lista);
@@ -177,6 +180,7 @@ public class asignarServicioControlador extends HttpServlet {
                     asiVO.setNombrePeluquero(lista.get(i).getNombrePeluquero());
                     asiVO.setNombreMascota(lista.get(i).getNombreMascota());
                     asiVO.setNombreServicio(lista.get(i).getNombreServicio());
+                    asiVO.setIdCliente(lista.get(i).getIdCliente());
 
                     /*asignarDAO.registrarCISI(asiVO);*/
                     if (asignarDAO.registrarCISI(asiVO)) {

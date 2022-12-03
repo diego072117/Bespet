@@ -11,18 +11,21 @@ package ModeloVO;
  */
 public class asignarServicioVO {
 
-    private String id_Asignar, id_Mascota, id_Servicio, id_Peluquero, nombrePeluquero,nombreMascota, nombreServicio, Estado;
+    private String id_Asignar, id_Mascota, id_Servicio, id_Peluquero, nombrePeluquero,nombreMascota, nombreServicio,idCliente,fechaTerminado, Estado;
 
-    public asignarServicioVO(String id_Asignar, String id_Mascota, String id_Servicio, String id_Peluquero,String nombrePeluquero,String nombreMascota,String nombreServicio, String Estado) {
+    public asignarServicioVO(String id_Asignar, String id_Mascota, String id_Servicio, String id_Peluquero, String nombrePeluquero, String nombreMascota, String nombreServicio, String idCliente,String fechaTerminado,String Estado) {
         this.id_Asignar = id_Asignar;
         this.id_Mascota = id_Mascota;
         this.id_Servicio = id_Servicio;
         this.id_Peluquero = id_Peluquero;
-        this.nombreMascota = nombreMascota;
-        this.nombreServicio =nombreServicio;
         this.nombrePeluquero = nombrePeluquero;
+        this.nombreMascota = nombreMascota;
+        this.nombreServicio = nombreServicio;
+        this.idCliente = idCliente;
+        this.fechaTerminado = fechaTerminado;
         this.Estado = Estado;
     }
+
 
     public asignarServicioVO() {
     }
@@ -83,6 +86,26 @@ public class asignarServicioVO {
         this.nombreServicio = nombreServicio;
     }
 
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+
+    public String getFechaTerminado() {
+        return fechaTerminado;
+    }
+
+    public void setFechaTerminado(String fechaTerminado) {
+        this.fechaTerminado = fechaTerminado;
+    }
+    
+    
+    
+   
     public String getEstado() {
         return Estado;
     }

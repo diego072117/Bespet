@@ -4,74 +4,148 @@
     Author     : DIEGO
 --%>
 
+<%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="css/estilos_form.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/x-icon" href="image/pata.png">
+        <link href="css/estulos-dash.css" rel="stylesheet" type="text/css"/>
         <link href="css/validaciones.css" rel="stylesheet" type="text/css"/>
-        <title>Registro Producto</title>
+        <link href="css/formularios.css" rel="stylesheet" type="text/css"/>
+
+        <title>Registrar producto</title>
     </head>
     <body>
-        <%@include file="navadmin.jsp"%>
-        <div class="home-section">
 
-            
-                <h1>Registro Producto</h1>
-                <div class="form-data4">
-                    <div>
-                        <a class="atras" href="Producto.jsp"><i class="fa-solid fa-angle-left"></i></a>
+        <div class="container-dash">
+            <%@include file="navadmin.jsp"%>
+
+            <%    String id_usua = rolVO.getId_Rol();
+
+                UsuarioVO usuaVO = new UsuarioVO();
+
+                UsuarioDAO usuaDAO = new UsuarioDAO(usuaVO);
+
+                usuaVO = usuaDAO.consultarUsuUsu(id_usua);
+
+
+            %>
+
+            <!-- main -->
+            <div class="main">
+                <div class="topbar">
+                    <div class="toggle" id="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <center>
-                    <img src="image/producto.svg" class="gatuno7"/>
-                    <div class="form" id="form">
-                        <form method="post" action="Producto">
-                            <table>
-                                <tr>
-                                <div class="formulario__grupo" id="grupo__NombreProducto">
-                                    <label class="peluq" for="NombreProducto">Nombre</label>
-                                    <div class="formulario__grupo-input">
-                                        <input type="text" class="formulario__input" name="NombreProducto" id="NombreProducto" placeholder="Nombre">
-                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                    </div>
-                                    <p class="formulario__input-error">Error</p>
-                                </div><br>
-                                <div class="formulario__grupo" id="grupo__Precio">
-                                    <label class="peluq" for="Precio">Precio</label>
-                                    <div class="formulario__grupo-input">
-                                        <input type="text" class="formulario__input" name="Precio" id="Precio" placeholder="Nombre">
-                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                    </div>
-                                    <p class="formulario__input-error">Error</p>
-                                </div><br>
-                                <label class="peluq">Imagen</label>
-                                <input type="file" name="img" required><br>
+                    <!-- search -->
+                    <div class="search">
+                        <label>
+                            <input type="text" placeholder="Buscar here">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </div>
+                    <%= usuaVO.getUsuario()%>
+                    <!--user img-->
+                    <div class="user">
+                        <img src="./image/admin.svg" alt="">
+                    </div>
+                </div>
+
+                <!-- Cards -->
 
 
-                                </select><br>
-                                </tr>
-                            </table>
-                            <button type="submit">Registrar</button> 
+
+
+                <div class="details-dash">
+                    <div class="recentOrders">
+                        <div class="cardHeader-dash">
+                            <h2>Registra producto</h2>
+
+
+                        </div>
+
+
+
+
+                        <form method="post" class="formulario" action="Producto">
+                            <div class="form" id="form">
+                                <div class="columna">
+                                    <div class="formulario__grupo" id="grupo__NombreProducto">
+                                        <label class="peluq" for="NombreProducto">Nombre</label>
+                                        <div class="formulario__grupo-input">
+                                            <input type="text" class="formulario__input" name="NombreProducto" id="NombreProducto" placeholder="Nombre">
+                                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                        </div>
+                                        <p class="formulario__input-error">Digite un nombre valido</p>
+                                    </div>
+                                    <div class="formulario__grupo" id="grupo__Precio">
+                                        <label class="peluq" for="Precio">Precio</label>
+                                        <div class="formulario__grupo-input">
+                                            <input type="text" class="formulario__input" name="Precio" id="Precio" placeholder="1000">
+                                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                        </div>
+                                        <p class="formulario__input-error">Digite un precio valido</p>
+                                    </div>
+                                    <div class="formulario__grupo" id="grupo__Precio">
+                                        <label class="peluq" for="Precio">Imagen</label>
+                                        <div class="formulario__grupo-input">
+                                            <input class="inp-img" type="file" name="img" required>
+                                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                        </div>
+                                        <p class="formulario__input-error">Error</p>
+                                    </div>
+
+                                </div>
+                                <img class="img-usu" src="./image/reg-pro.svg" alt="usuarios">
+                            </div>
+                            <button class="btn2" type="submit">Registrar<i class='bx bxs-send'></i></button>
                             <input type="hidden" value="1" name="opcion"><br>
 
                         </form><br>
-                    </div>
-                    <%                        if (request.getAttribute("mensajeError") != null) { %>
-                    ${mensajeError}
 
-                    <%} else {%>
-                    ${mensajeExito}
-                    <%}%>
+                        <%                        if (request.getAttribute("mensajeError") != null) { %>
+                        ${mensajeError}
+
+                        <%} else {%>
+                        ${mensajeExito}
+                        <%}%>
+
+                    </div>
+
+                    <div class="recentCustomers">
+                        <div class="cardHeader-dash">
+                            <h2>Contenido</h2>
+                        </div>
+                        <div>
+                            <div class="imageci">
+                                <img src="./image/peluquero.svg" alt="usuarios" class="img-usu" >
+                            </div>
+                            <div>
+                                <h4>Peluqueros</h4>
+                                <p>
+                                    En este apartado encontraras los peluqueros registrados en el sistema, podrá modificar su información, eliminarlos del sistema, registrar un nuevo peluquero y finalmente generar un reporte de los peluqueros si es necesario.                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
-            </center>
+
+            </div>
+
         </div>
-        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
-        <script src="js/validaciones.js" type="text/javascript"></script>
+
+
+
+
+        <script src="js/validaciones.js"></script>
+        <script src="js/nav.js" type="text/javascript"></script>
+
+
+
+
     </body>
 </html>

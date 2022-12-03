@@ -37,7 +37,7 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
     private String sql;
 
     //declarar las variables 
-    private String id_Asignar = "", id_Mascota = "", id_Servicio = "", id_Peluquero="",nombrePeluquero="",nombreMascota="",nombreServicio="",  Estado = "";
+    private String id_Asignar = "", id_Mascota = "", id_Servicio = "", id_Peluquero="",nombrePeluquero="",nombreMascota="",nombreServicio="",idCliente="",fechaTerminado="",  Estado = "";
 
     public asignarServicioDAO() {
     }
@@ -58,6 +58,8 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
             nombrePeluquero = asiVO.getNombrePeluquero();
             nombreMascota= asiVO.getNombreMascota();
             nombreServicio= asiVO.getNombreMascota();
+            idCliente = asiVO.getIdCliente();
+            fechaTerminado = asiVO.getFechaTerminado();
             Estado = asiVO.getEstado();
 
         } catch (Exception e) {
@@ -71,7 +73,7 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
 
    
     public boolean registrarCISI(asignarServicioVO asignar) {
-         String consulta ="INSERT INTO asignarservicio (id_Mascota,id_Servicios,id_Peluquero,nombrePeluquero,nombreMascota,nombreServicio) VALUES (?,?,?,?,?,?)";
+         String consulta ="INSERT INTO asignarservicio (id_Mascota,id_Servicios,id_Peluquero,nombrePeluquero,nombreMascota,nombreServicio,idcliente) VALUES (?,?,?,?,?,?,?)";
          try {
           conexion = con.obtenerConexion();
             puente = conexion.prepareStatement(consulta);
@@ -81,7 +83,8 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
             puente.setString(3, asignar.getId_Peluquero());
             puente.setString(4, asignar.getNombrePeluquero());
             puente.setString(5, asignar.getNombreMascota());
-            puente.setString(6, asignar.getNombreMascota());
+            puente.setString(6, asignar.getNombreServicio());
+            puente.setString(7, asignar.getIdCliente());
             puente.executeUpdate();
             puente.close();
      
@@ -132,7 +135,8 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 asignarServicioVO = new asignarServicioVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
-                        mensajero.getString(4),mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8));
+                        mensajero.getString(4),mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8),mensajero.getString(9)
+                        ,mensajero.getString(10));
                 
             }
 
@@ -155,7 +159,8 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 asignarServicioVO = new asignarServicioVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3),
-                        mensajero.getString(4),mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8));
+                        mensajero.getString(4),mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8),mensajero.getString(9)
+                ,mensajero.getString(10));
                 
             }
 
@@ -178,12 +183,40 @@ public class asignarServicioDAO extends ConexionBd implements Crud{
         ArrayList<asignarServicioVO> listaAsi = new ArrayList<>();
         try {
             conexion = this.obtenerConexion();
-            sql = "select asi.id_Asignar, mas.Nombre, servi.Nombre, pelu.Nombre ,asi.nombrePeluquero,asi.nombreMascota,nombreServicio, asi.Estado from asignarservicio as asi INNER JOIN mascota as mas on mas.id_Mascota = asi.id_Mascota INNER JOIN servicios as servi ON servi.id_Servicios = asi.id_Servicios INNER JOIN peluquero as pelu on pelu.id_Peluquero=asi.id_Peluquero WHERE asi.Estado = 'pendiente';";
+            sql = "select asi.id_Asignar, mas.Nombre, servi.Nombre, pelu.Nombre ,asi.nombrePeluquero,asi.nombreMascota,nombreServicio,asi.idCliente,asi.fechaterminado, asi.Estado from asignarservicio as asi INNER JOIN mascota as mas on mas.id_Mascota = asi.id_Mascota INNER JOIN servicios as servi ON servi.id_Servicios = asi.id_Servicios INNER JOIN peluquero as pelu on pelu.id_Peluquero=asi.id_Peluquero WHERE asi.Estado = 'pendiente';";
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 asignarServicioVO asiVO = new asignarServicioVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), 
-                        mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8));
+                        mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8),mensajero.getString(9),mensajero.getString(10));
+                listaAsi.add(asiVO);
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(asignarServicioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(asignarServicioDAO.class.getName()).log(Level.SEVERE, null, e);
+
+            }
+
+        }
+        return listaAsi;
+    }
+     
+     public ArrayList<asignarServicioVO> listarTerminados() {
+
+        ArrayList<asignarServicioVO> listaAsi = new ArrayList<>();
+        try {
+            conexion = this.obtenerConexion();
+            sql = "select asi.id_Asignar, mas.Nombre, servi.Nombre, pelu.Nombre ,asi.nombrePeluquero,asi.nombreMascota,nombreServicio,concat(clie.Nombres,' ',clie.Apellidos) as cliente,asi.fechaterminado, asi.Estado from asignarservicio as asi INNER JOIN mascota as mas on mas.id_Mascota = asi.id_Mascota INNER JOIN servicios as servi ON servi.id_Servicios = asi.id_Servicios INNER JOIN peluquero as pelu on pelu.id_Peluquero=asi.id_Peluquero INNER JOIN cliente as clie on clie.id_cliente = mas.id_cliente WHERE asi.Estado = 'terminado';";
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+            while (mensajero.next()) {
+                asignarServicioVO asiVO = new asignarServicioVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4), 
+                        mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8),mensajero.getString(9),mensajero.getString(10));
                 listaAsi.add(asiVO);
             }
 
@@ -236,13 +269,13 @@ SELECT mas.Nombre, servi.Nombre, pelu.Nombre FROM asignarservicio as asi INNER J
         try {
             conexion = this.obtenerConexion();
             //sql = "SELECT * FROM `asignarservicio` WHERE id_Peluquero = ? AND Estado='pendiente'";
-            sql = "SELECT asi.id_Asignar, mas.Nombre,ser.Nombre,ser.id_Servicios, asi.id_Peluquero, asi.nombrePeluquero,asi.nombreMascota,asi.nombreServicio, asi.Estado FROM `asignarservicio` as asi INNER JOIN mascota as mas on asi.id_Mascota=mas.id_Mascota INNER JOIN servicios as ser on asi.id_Servicios=ser.id_Servicios WHERE asi.id_Peluquero = ? AND asi.Estado='pendiente';";
+            sql = "SELECT asi.id_Asignar, mas.Nombre,ser.Nombre,asi.id_Peluquero, asi.nombrePeluquero,asi.nombreMascota,asi.nombreServicio,concat(clie.Nombres,' ',clie.Apellidos) as cliente,asi.fechaterminado, asi.Estado FROM `asignarservicio` as asi INNER JOIN mascota as mas on asi.id_Mascota=mas.id_Mascota INNER JOIN servicios as ser on asi.id_Servicios=ser.id_Servicios INNER JOIN cliente as clie on clie.id_cliente = mas.id_cliente WHERE asi.id_Peluquero = ? AND asi.Estado='pendiente';";
             puente = conexion.prepareStatement(sql);
             puente.setString(1, id_Peluquero);
             mensajero = puente.executeQuery();
             while (mensajero.next()) {
                 asignarServicioVO asiVO = new asignarServicioVO(mensajero.getString(1), mensajero.getString(2), mensajero.getString(3), mensajero.getString(4),
-                        mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8));
+                        mensajero.getString(5),mensajero.getString(6),mensajero.getString(7),mensajero.getString(8),mensajero.getString(9),mensajero.getString(10));
                 listaTusServicios.add(asiVO);
             }
 
@@ -265,7 +298,7 @@ SELECT mas.Nombre, servi.Nombre, pelu.Nombre FROM asignarservicio as asi INNER J
            asignarServicioVO asignarServicioVO = null;
             try {
              conexion = this.obtenerConexion();
-            sql = "update asignarservicio set estado='terminado' where id_Asignar=?";
+            sql = "update asignarservicio set fechaterminado = current_timestamp, estado='terminado' where id_Asignar=?";
             puente = conexion.prepareStatement(sql);
             
  
@@ -295,14 +328,7 @@ SELECT mas.Nombre, servi.Nombre, pelu.Nombre FROM asignarservicio as asi INNER J
 
         } catch (SQLException e) {
             Logger.getLogger(ServiciosDAO.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            try {
-                this.cerrarConexion();
-            } catch (Exception e) {
-                Logger.getLogger(ServiciosDAO.class.getName()).log(Level.SEVERE, null, e);
-
-            }
-        }
+        } 
 
         return asignarServicioVO;
 
